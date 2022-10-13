@@ -45,13 +45,13 @@ class _LogginigPageState extends State<LogginigPage> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFF496AE1),
-                    Color(0xFFCE48B1),
+                    Color(0xFFf9cc7b),
+                    Color(0xFFf7764a)
                   ]),
             ),
             child: ListView(
               padding: const EdgeInsets.only(
-                  top: 200, bottom: 250, right: 40, left: 40),
+                  top: 210, bottom: 240, right: 40, left: 40),
               children: [
                 Container(
                   alignment: Alignment.topCenter,
@@ -62,8 +62,8 @@ class _LogginigPageState extends State<LogginigPage> {
                       fontWeight:FontWeight.bold,
                     ),
                     colors: const [
-                      Colors.pinkAccent,
-                      Colors.purpleAccent],),
+                      Color(0xFFf15256),
+                      Color(0xFFf15256)],),
                 ),
                 const SizedBox(height: 15),
 
@@ -76,12 +76,12 @@ class _LogginigPageState extends State<LogginigPage> {
                   controller: _usernameController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: Color(0xFFf5da8b),
                       labelText: "Username",
                       hintText: "Enter username",
                       prefixIcon: Icon(
                         Icons.assignment_ind,
-                        color: Color(0xFF9575CD),
+                        color: Color(0xFFe47449),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -91,7 +91,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                        BorderSide(color: Color(0xFFe47449), width: 2.0),
                       )),
                   validator: validateloginUsername,
                   onSaved: (value) => newUser.username = value!,
@@ -108,12 +108,12 @@ class _LogginigPageState extends State<LogginigPage> {
                   controller: _emailController,
                   decoration: const InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: Color(0xFFf5da8b),
                       labelText: "Email address",
                       hintText: "Enter email address",
                       prefixIcon: Icon(
                         Icons.alternate_email,
-                        color: Color(0xFF9575CD),
+                        color: Color(0xFFe47449),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -123,7 +123,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                        BorderSide(color: Color(0xFFe47449), width: 2.0),
                       )),
                   validator: validatelloginEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -139,7 +139,7 @@ class _LogginigPageState extends State<LogginigPage> {
                   obscureText: _hidepassword,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: const Color(0xFFB39DDB),
+                      fillColor: const Color(0xFFf5da8b),
                       labelText: "Password",
                       hintText: "Enter password",
                       suffixIcon: IconButton(
@@ -147,7 +147,7 @@ class _LogginigPageState extends State<LogginigPage> {
                             _hidepassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: const Color(0xFF9575CD)),
+                            color: const Color(0xFFe47449)),
                         onPressed: () {
                           setState(() {
                             _hidepassword = !_hidepassword;
@@ -156,7 +156,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       ),
                       prefixIcon: const Icon(
                         Icons.password,
-                        color: Color(0xFF9575CD),
+                        color: Color(0xFFe47449),
                       ),
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -166,7 +166,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                        BorderSide(color: Color(0xFFe47449), width: 2.0),
                       )),
                   validator: _validateloginPassword,
                 ),
@@ -181,8 +181,8 @@ class _LogginigPageState extends State<LogginigPage> {
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
                       colors: [
-                        Color(0xFFBA68C8),
-                        Color(0xFF8E24AA)],
+                        Color(0xFFf15256),
+                        Color(0xFFff6b29)],
                     ),
                   ),
                   height: 35,
@@ -235,7 +235,7 @@ class _LogginigPageState extends State<LogginigPage> {
                         'Register',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          color: Colors.amberAccent,
+                          color: Color(0xFFdd434f),
                           fontSize: 14,
                         ),
                       ),)

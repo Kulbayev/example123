@@ -52,8 +52,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFF496AE1),
-                    Color(0xFFCE48B1),
+                    Color(0xFF4d3e96),
+                    Color(0xFF924cba),
+                    Color(0xFF4d3e96)
                   ]),
             ),
             child: ListView(
@@ -69,8 +70,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         fontWeight:FontWeight.bold,
                       ),
                       colors: const [
-                        Colors.pinkAccent,
-                        Colors.purpleAccent],),
+                        Color(0xFFd2089a),
+                        Color(0xFFdf2166)],),
                 ),
                 const SizedBox(height: 15),
                 TextFormField(
