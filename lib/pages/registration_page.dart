@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:registration_ui/pages/logginig_page.dart';
 import 'package:registration_ui/pages/welcome_page.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../model/user.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -57,8 +58,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             child: ListView(
               padding: const EdgeInsets.only(
-                  top: 300, bottom: 250, right: 40, left: 40),
+                  top: 200, bottom: 250, right: 40, left: 40),
               children: [
+                Container(
+                  alignment: Alignment.topCenter,
+                  child: GradientText(
+                      "REGISTRATION",
+                      style: const TextStyle(
+                        fontSize: 35,
+                        fontWeight:FontWeight.bold,
+                      ),
+                      colors: const [
+                        Colors.pinkAccent,
+                        Colors.purpleAccent],),
+                ),
+                const SizedBox(height: 15),
                 TextFormField(
                   focusNode: _fullnameFocus,
                   autofocus: true,
@@ -88,7 +102,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   onSaved: (value) => newUser.fullname = value!,
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 7),
 
                 TextFormField(
                   focusNode: _usernameFocus,
@@ -120,7 +134,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   onSaved: (value) => newUser.username = value!,
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 7),
 
                 TextFormField(
                   controller: _emailController,
@@ -144,12 +158,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             BorderSide(color: Color(0xFF9575CD), width: 2.0),
                       )),
                   keyboardType: TextInputType.emailAddress,
-                  // validator: validateEmail,
+                  validator: validateEmail,
                   onSaved: (value) => newUser.email = value!,
 
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 7),
 
                 TextFormField(
                   focusNode: _phoneFocus,
@@ -191,7 +205,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   onSaved: (value) => newUser.phone = value!,
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 7),
 
                 TextFormField(
                   focusNode: _passFocus,
@@ -199,7 +213,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   obscureText: _hidepassword,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: const Color(0xFFB39DDB),
                       labelText: "Password",
                       hintText: "Enter password",
                       suffixIcon: IconButton(
@@ -207,7 +221,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             _hidepassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Color(0xFF9575CD)),
+                            color: const Color(0xFF9575CD)),
                         onPressed: () {
                           setState(() {
                             _hidepassword = !_hidepassword;
@@ -231,21 +245,77 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   validator: _validatePassword,
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 10),
 
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF7E57C2),
-                    textStyle: TextStyle(color: Color(0xFF9575CD)),
-                    fixedSize: const Size(20,10),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(32.0))
-                      ),
+                Container(
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(80),
+                    gradient: const LinearGradient(
+                      begin: Alignment.centerRight,
+                      end: Alignment.centerLeft,
+                      colors: [
+                        Color(0xFFBA68C8),
+                        Color(0xFF8E24AA)],
+                    ),
                   ),
-                  child: const Text('Registration'),
-                  //color: Colors.green,
+                  height: 35,
+                  child: MaterialButton(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    shape: const StadiumBorder(),
+                    onPressed: _submitForm,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 115),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:const [
+                          Text(
+                            'SUBMIT',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                                color: Colors.white),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
+                const SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: const Text("Already have an account?",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 13
+                      ),),
+                    ),
+                    TextButton(
+                        onPressed:() {
+                          Navigator.push( context,
+                          MaterialPageRoute(
+                            builder: (context) => LogginigPage(
+                              usersInfo: newUser,
+                            ),
+                          ),
+                        );},
+                        child: const Text(
+                          'Sing in',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.amberAccent,
+                            fontSize: 14,
+                          ),
+                        ),)
+
+                  ],
+                )
               ],
             ),
           ),
@@ -257,7 +327,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
       _formKey.currentState!.save();
       _showDialog(name: _fullnameController.text);
     } else {
-      _showMessage(message: 'Form is not valid! Please review and correct');
+      _showMessage(message: 'Incorrectly filled data! Please try again');
     }
   }
 
@@ -310,7 +380,7 @@ String? _validatePassword(String? value) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(32.0))
           ),
           title: const Text(
@@ -331,12 +401,21 @@ String? _validatePassword(String? value) {
           ),
           actions: [
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF9575CD)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    side: const BorderSide(color: Color(0xFF9575CD))
+                  )
+                )
+              ),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => WelcomePage(
+                    builder: (context) => LogginigPage(
                       usersInfo: newUser,
                     ),
                   ),
@@ -345,7 +424,7 @@ String? _validatePassword(String? value) {
               child: const Text(
                 'Continue',
                 style: TextStyle(
-                  color: Color(0xFF9575CD),
+                  color: Colors.white,
                   fontSize: 18.0,
                   fontFamily: 'helvetica_neue_light',
                 ),
@@ -360,15 +439,18 @@ String? _validatePassword(String? value) {
   void _showMessage({required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 1),
-        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 3),
+        backgroundColor: const Color(0xFFEF5350),
+        behavior: SnackBarBehavior.floating,
         content: Text(
           message,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 18.0,
-          ),
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w300,
+          fontSize: 15
+        ),),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20))
         ),
       ),
     );
