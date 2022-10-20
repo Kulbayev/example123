@@ -36,6 +36,11 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
             fontWeight: FontWeight.w600,
           ),
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.elliptical(700, 50),
+              bottomLeft: Radius.elliptical(700, 50)),
+        ),
         centerTitle: true,
         backgroundColor: Color(0xFF38c172),
       ),
@@ -50,8 +55,8 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
       decoration: const BoxDecoration(
           color: Color(0xFF38c172),
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
+            topRight: Radius.circular(45),
+            topLeft: Radius.circular(45),
           ),
       ),
       child: Row(
