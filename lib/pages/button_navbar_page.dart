@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:registration_ui/button_pages/first_page.dart';
 import 'package:registration_ui/button_pages/second_page.dart';
 import 'package:registration_ui/button_pages/third_page.dart';
+import 'package:registration_ui/translations/locale_keys.g.dart';
 
 
 
@@ -26,8 +28,8 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          "NEWS",
+        title: Text(
+          LocaleKeys.appbarNews.tr(),
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,

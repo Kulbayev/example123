@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:registration_ui/constants/colors.dart';
 import 'package:registration_ui/pages/registration_page.dart';
 import 'package:registration_ui/pages/welcome_page.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
@@ -78,11 +79,11 @@ class _LogginigPageState extends State<LogginigPage> {
                   controller: _usernameController,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFf5da8b),
+                      fillColor: AppColors.LoginInput,
                       hintText: LocaleKeys.inputusername.tr(),
                       prefixIcon: Icon(
                         Icons.assignment_ind,
-                        color: Color(0xFFe47449),
+                        color: AppColors.PeachIconBorderLogin,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -92,7 +93,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFFe47449), width: 2.0),
+                        BorderSide(color: AppColors.PeachIconBorderLogin, width: 2.0),
                       )),
                   validator: validateloginUsername,
                   onSaved: (value) => newUser.username = value!,
@@ -109,11 +110,11 @@ class _LogginigPageState extends State<LogginigPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFf5da8b),
+                      fillColor: AppColors.LoginInput,
                       hintText: LocaleKeys.inputemail.tr(),
                       prefixIcon: Icon(
                         Icons.alternate_email,
-                        color: Color(0xFFe47449),
+                        color: AppColors.PeachIconBorderLogin,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -123,7 +124,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFFe47449), width: 2.0),
+                        BorderSide(color: AppColors.PeachIconBorderLogin, width: 2.0),
                       )),
                   validator: validatelloginEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -139,14 +140,14 @@ class _LogginigPageState extends State<LogginigPage> {
                   obscureText: _hidepassword,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: const Color(0xFFf5da8b),
+                      fillColor: AppColors.LoginInput,
                       hintText: LocaleKeys.inputpassword.tr(),
                       suffixIcon: IconButton(
                         icon: Icon(
                             _hidepassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: const Color(0xFFe47449)),
+                            color: AppColors.PeachIconBorderLogin),
                         onPressed: () {
                           setState(() {
                             _hidepassword = !_hidepassword;
@@ -155,7 +156,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       ),
                       prefixIcon: const Icon(
                         Icons.password,
-                        color: Color(0xFFe47449),
+                        color: AppColors.PeachIconBorderLogin,
                       ),
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -165,7 +166,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                        BorderSide(color: Color(0xFFe47449), width: 2.0),
+                        BorderSide(color: AppColors.PeachIconBorderLogin, width: 2.0),
                       )),
                   validator: _validateloginPassword,
                 ),

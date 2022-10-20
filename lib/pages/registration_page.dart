@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:registration_ui/constants/colors.dart';
 import 'package:registration_ui/pages/logginig_page.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -83,9 +84,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   controller: _fullnameController,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputfullname.tr(),
-                      prefixIcon: Icon(Icons.people, color: Color(0xFF9575CD)),
+                      prefixIcon: Icon(Icons.people, color: AppColors.PurpleIconBorderReg),
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
@@ -94,7 +95,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: validateFullName,
                   onSaved: (value) => newUser.fullname = value!,
@@ -109,11 +110,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   controller: _usernameController,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputusername.tr(),
                       prefixIcon: Icon(
                         Icons.assignment_ind,
-                        color: Color(0xFF9575CD),
+                        color: AppColors.PurpleIconBorderReg,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -123,7 +124,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: validateUsername,
                   onSaved: (value) => newUser.username = value!,
@@ -133,11 +134,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputemail.tr(),
                       prefixIcon: Icon(
                         Icons.alternate_email,
-                        color: Color(0xFF9575CD),
+                        color: AppColors.PurpleIconBorderReg,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -147,7 +148,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   keyboardType: TextInputType.emailAddress,
                   validator: validateEmail,
@@ -163,11 +164,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   // maxLength: 10,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFFB39DDB),
+                      fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputphone.tr(),
                       prefixIcon: Icon(
                         Icons.phone,
-                        color: Color(0xFF9575CD),
+                        color: AppColors.PurpleIconBorderReg,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -177,7 +178,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   keyboardType: TextInputType.phone,
                   // inputFormatters: [
@@ -198,14 +199,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   obscureText: _hidepassword,
                   decoration: InputDecoration(
                       filled: true,
-                      fillColor: const Color(0xFFB39DDB),
+                      fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputpassword.tr(),
                       suffixIcon: IconButton(
                         icon: Icon(
                             _hidepassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: const Color(0xFF9575CD)),
+                            color: AppColors.PurpleIconBorderReg),
                         onPressed: () {
                           setState(() {
                             _hidepassword = !_hidepassword;
@@ -214,7 +215,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       prefixIcon: const Icon(
                         Icons.password,
-                        color: Color(0xFF9575CD),
+                        color: AppColors.PurpleIconBorderReg,
                       ),
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -224,7 +225,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Color(0xFF9575CD), width: 2.0),
+                            BorderSide(color:AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: _validatePassword,
                 ),
@@ -367,7 +368,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           title: Text(
             LocaleKeys.dialogDone.tr(),
             style: TextStyle(
-                color: Color(0xFF9575CD),
+                color: AppColors.PurpleIconBorderReg,
                 fontFamily: 'helvetica_neue_light',
                 fontSize: 23),
           ),
@@ -383,11 +384,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ElevatedButton(
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xFF9575CD)),
+                      MaterialStateProperty.all<Color>(AppColors.PurpleIconBorderReg),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
-                          side: const BorderSide(color: Color(0xFF9575CD))))),
+                          side: const BorderSide(color: AppColors.PurpleIconBorderReg)))),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.push(
