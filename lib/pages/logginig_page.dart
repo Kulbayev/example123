@@ -251,9 +251,7 @@ class _LogginigPageState extends State<LogginigPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => WelcomePage(
-            usersInfo: newUser,
-          ),
+          builder: (context) => WelcomePage(),
         ),
       );
     } else {

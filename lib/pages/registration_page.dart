@@ -84,7 +84,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      hintText: "Enter Full Name",
+                      hintText: LocaleKeys.inputfullname,
                       prefixIcon: Icon(Icons.people, color: Color(0xFF9575CD)),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),

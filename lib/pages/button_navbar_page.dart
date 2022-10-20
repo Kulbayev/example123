@@ -35,7 +35,7 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF38c172),
       ),
       body: pages[pageIndex],
       bottomNavigationBar: buildButtonNavbarPage(context),
@@ -46,7 +46,7 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
     return Container(
       height: 60,
       decoration: const BoxDecoration(
-          color: Colors.green,
+          color: Color(0xFF38c172),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             topLeft: Radius.circular(30),
