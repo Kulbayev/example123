@@ -1,0 +1,22 @@
+{
+  "registr": "REGISTRATION",
+  "inputfullname": "Enter Full Name",
+  "inputusername": "Username",
+  "inputemail": "Enter email address",
+  "inputphone": "Phone format: (XXX)XXX-XXXX",
+  "inputpassword": "Password",
+  "buttonSubmit": "SUBMIT",
+  "haveacc": "Already have an account?",
+  "buttonSign": "Sing in",
+  "submitForm": "Incorrectly filled data! Please try again",
+  "validFullnamereq": "Fullname is reqired",
+  "validFullnamealph": "Please enter alphabetical characters",
+  "validUsernamereq": "Username is reqired",
+  "validUsernamealph": "Please enter alphabetical characters",
+  "validEmailempty": "Email cannot be empty",
+  "validEmailaddress": "Invalid email address",
+  "validPassword": "8 character required for password",
+  "dialogDone": "Done",
+  "dialogText": "good job",
+  "dialogButton": "Continue"
+}

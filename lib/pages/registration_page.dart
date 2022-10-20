@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:registration_ui/pages/logginig_page.dart';
-import 'package:registration_ui/pages/welcome_page.dart';
+import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../model/user.dart';
 
@@ -64,14 +65,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Container(
                   alignment: Alignment.topCenter,
                   child: GradientText(
-                      "REGISTRATION",
-                      style: const TextStyle(
-                        fontSize: 35,
-                        fontWeight:FontWeight.bold,
-                      ),
-                      colors: const [
-                        Color(0xFFd2089a),
-                        Color(0xFFdf2166)],),
+                    LocaleKeys.registr.tr(),
+                    style: const TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    colors: const [Color(0xFFd2089a), Color(0xFFdf2166)],
+                  ),
                 ),
                 const SizedBox(height: 15),
                 TextFormField(
@@ -84,11 +84,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      labelText: "Full Name",
                       hintText: "Enter Full Name",
-                      prefixIcon: Icon(
-                        Icons.people,
-                        color: Color(0xFF9575CD)),
+                      prefixIcon: Icon(Icons.people, color: Color(0xFF9575CD)),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
@@ -102,9 +99,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   validator: validateFullName,
                   onSaved: (value) => newUser.fullname = value!,
                 ),
-
                 const SizedBox(height: 7),
-
                 TextFormField(
                   focusNode: _usernameFocus,
                   autofocus: true,
@@ -115,7 +110,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      labelText: "Username",
                       hintText: "Enter username",
                       prefixIcon: Icon(
                         Icons.assignment_ind,
@@ -134,15 +128,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   validator: validateUsername,
                   onSaved: (value) => newUser.username = value!,
                 ),
-
                 const SizedBox(height: 7),
-
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      labelText: "Email address",
                       hintText: "Enter email address",
                       prefixIcon: Icon(
                         Icons.alternate_email,
@@ -161,11 +152,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   keyboardType: TextInputType.emailAddress,
                   validator: validateEmail,
                   onSaved: (value) => newUser.email = value!,
-
                 ),
-
                 const SizedBox(height: 7),
-
                 TextFormField(
                   focusNode: _phoneFocus,
                   onFieldSubmitted: (_) {
@@ -176,7 +164,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      labelText: "Phone number",
                       hintText: "Phone format: (XXX)XXX-XXXX",
                       prefixIcon: Icon(
                         Icons.phone,
@@ -198,16 +185,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   //   FilteringTextInputFormatter(RegExp(r'^[()\d -]{1,10}$'),
                   //       allow: true),
                   // ],
-                  inputFormatters: [
-                    maskFormatter],
+                  inputFormatters: [maskFormatter],
                   // validator: (value) => validatePhoneNumber(value!)
                   //     ? null
                   //     : 'Phone number must be entered as (###)###-####',
                   onSaved: (value) => newUser.phone = value!,
                 ),
-
                 const SizedBox(height: 7),
-
                 TextFormField(
                   focusNode: _passFocus,
                   controller: _passController,
@@ -215,7 +199,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFB39DDB),
-                      labelText: "Password",
                       hintText: "Enter password",
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -245,9 +228,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       )),
                   validator: _validatePassword,
                 ),
-
                 const SizedBox(height: 10),
-
                 Container(
                   width: 50,
                   decoration: BoxDecoration(
@@ -255,9 +236,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     gradient: const LinearGradient(
                       begin: Alignment.centerRight,
                       end: Alignment.centerLeft,
-                      colors: [
-                        Color(0xFFBA68C8),
-                        Color(0xFF8E24AA)],
+                      colors: [Color(0xFFBA68C8), Color(0xFF8E24AA)],
                     ),
                   ),
                   height: 35,
@@ -269,7 +248,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       padding: const EdgeInsets.only(left: 115),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children:const [
+                        children: const [
                           Text(
                             'SUBMIT',
                             style: TextStyle(
@@ -291,30 +270,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: const Text("Already have an account?",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 13
-                      ),),
+                      child: const Text(
+                        "Already have an account?",
+                        style: TextStyle(color: Colors.black54, fontSize: 13),
+                      ),
                     ),
                     TextButton(
-                        onPressed:() {
-                          Navigator.push( context,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
                           MaterialPageRoute(
                             builder: (context) => LogginigPage(
                               usersInfo: newUser,
                             ),
                           ),
-                        );},
-                        child: const Text(
-                          'Sing in',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.amberAccent,
-                            fontSize: 14,
-                          ),
-                        ),)
-
+                        );
+                      },
+                      child: const Text(
+                        'Sing in',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.amberAccent,
+                          fontSize: 14,
+                        ),
+                      ),
+                    )
                   ],
                 )
               ],
@@ -354,43 +334,42 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
 
-String? validateEmail(String? value) {
-  if (value == null) {
-    return 'Email cannot be empty';
-  } else if (!_emailController.text.contains('@')) {
-    return 'Invalid email address';
-  } else {
-    return null;
+  String? validateEmail(String? value) {
+    if (value == null) {
+      return 'Email cannot be empty';
+    } else if (!_emailController.text.contains('@')) {
+      return 'Invalid email address';
+    } else {
+      return null;
+    }
   }
-}
 
   // bool validatePhoneNumber(String input) {
   //   final phoneExp = RegExp(r'^\(\d\d\d\)\d\d\d\-\d\d\-\d\d$');
   //   return phoneExp.hasMatch(input);
   // }
 
-String? _validatePassword(String? value) {
-  if (_passController.text.length <= 7) {
-    return '8 character required for password';
-  }  else {
-    return null;
+  String? _validatePassword(String? value) {
+    if (_passController.text.length <= 7) {
+      return '8 character required for password';
+    } else {
+      return null;
+    }
   }
-}
+
   void _showDialog({required String name}) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(32.0))
-          ),
+              borderRadius: BorderRadius.all(Radius.circular(32.0))),
           title: const Text(
             'Done',
             style: TextStyle(
-              color: Color(0xFF9575CD),
-              fontFamily: 'helvetica_neue_light',
-              fontSize: 23
-            ),
+                color: Color(0xFF9575CD),
+                fontFamily: 'helvetica_neue_light',
+                fontSize: 23),
           ),
           content: Text(
             '$name good job',
@@ -403,14 +382,12 @@ String? _validatePassword(String? value) {
           actions: [
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF9575CD)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    side: const BorderSide(color: Color(0xFF9575CD))
-                  )
-                )
-              ),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(const Color(0xFF9575CD)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                          side: const BorderSide(color: Color(0xFF9575CD))))),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -445,14 +422,11 @@ String? _validatePassword(String? value) {
         behavior: SnackBarBehavior.floating,
         content: Text(
           message,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w300,
-          fontSize: 15
-        ),),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))
+          style: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w300, fontSize: 15),
         ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
       ),
     );
   }

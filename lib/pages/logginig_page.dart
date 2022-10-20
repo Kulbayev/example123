@@ -226,9 +226,7 @@ class _LogginigPageState extends State<LogginigPage> {
                       onPressed:() {
                         Navigator.push( context,
                           MaterialPageRoute(
-                            builder: (context) => WelcomePage(
-                              usersInfo: newUser,
-                            ),
+                            builder: (context) => RegistrationPage(),
                           ),
                         );},
                       child: const Text(

@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+
+class ThirdPage extends StatefulWidget {
+  const ThirdPage({Key? key}) : super(key: key);
+
+  @override
+  State<ThirdPage> createState() => _ThirdPageState();
+}
+
+class _ThirdPageState extends State<ThirdPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Text(
+        "Page 3 Page",
+        style: TextStyle(
+            color: Colors.blueAccent,
+            fontSize: 45,
+            fontWeight: FontWeight.w600
+        ),
+      ),
+    );
+  }
+}

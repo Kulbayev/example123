@@ -1,0 +1,22 @@
+{
+  "registr": "ТІРКЕЛУ",
+  "inputfullname": "Введите полное имя",
+  "inputusername": "Имя пользователя",
+  "inputemail": "Введите адрес электронной почты",
+  "inputphone": "Формат телефона: (XXX)XXX-XXXX",
+  "inputpassword": "Пароль",
+  "buttonSubmit": "ЖІБЕРУ",
+  "haveacc": "Уже есть аккаунт?",
+  "buttonSign": "Войти",
+  "submitForm": "Неправильно заполненные данные! Пожалуйста, попробуйте еще раз",
+  "validFullnamereq": "Требуется полное имя",
+  "validFullnamealph": "Пожалуйста, введите символы алфавита",
+  "validUsernamereq": "Требуется имя пользователя",
+  "validUsernamealph": "Пожалуйста, введите алфавитные символы",
+  "validEmailempty": "Электронная почта не может быть пустой",
+  "validEmailaddress": "Неверный адрес электронной почты",
+  "validPassword": "Для пароля требуется 8 символов",
+  "dialogDone": "Готово",
+  "dialogText": "хорошая работа",
+  "dialogButton": "Продолжить"
+}
