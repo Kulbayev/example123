@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:registration_ui/pages/registration_page.dart';
 import 'package:registration_ui/pages/welcome_page.dart';
+import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../model/user.dart';
 
@@ -56,7 +58,7 @@ class _LogginigPageState extends State<LogginigPage> {
                 Container(
                   alignment: Alignment.topCenter,
                   child: GradientText(
-                    "LOGIN",
+                    LocaleKeys.login.tr(),
                     style: const TextStyle(
                       fontSize: 35,
                       fontWeight:FontWeight.bold,
@@ -74,11 +76,10 @@ class _LogginigPageState extends State<LogginigPage> {
                     _fieldFocusChange(context, _usernameFocus, _emailFocus);
                   },
                   controller: _usernameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFf5da8b),
-                      labelText: "Username",
-                      hintText: "Enter username",
+                      hintText: LocaleKeys.inputusername.tr(),
                       prefixIcon: Icon(
                         Icons.assignment_ind,
                         color: Color(0xFFe47449),
@@ -106,11 +107,10 @@ class _LogginigPageState extends State<LogginigPage> {
                     _fieldFocusChange(context, _emailFocus, _passFocus);
                   },
                   controller: _emailController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFf5da8b),
-                      labelText: "Email address",
-                      hintText: "Enter email address",
+                      hintText: LocaleKeys.inputemail.tr(),
                       prefixIcon: Icon(
                         Icons.alternate_email,
                         color: Color(0xFFe47449),
@@ -140,8 +140,7 @@ class _LogginigPageState extends State<LogginigPage> {
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFf5da8b),
-                      labelText: "Password",
-                      hintText: "Enter password",
+                      hintText: LocaleKeys.inputpassword.tr(),
                       suffixIcon: IconButton(
                         icon: Icon(
                             _hidepassword
@@ -194,9 +193,9 @@ class _LogginigPageState extends State<LogginigPage> {
                       padding: const EdgeInsets.only(left: 115),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children:const [
+                        children: [
                           Text(
-                            'Sign In',
+                            LocaleKeys.buttonSign.tr(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15,
@@ -216,7 +215,7 @@ class _LogginigPageState extends State<LogginigPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: const Text("Don't have a account?",
+                      child: Text(LocaleKeys.noAcc.tr(),
                         style: TextStyle(
                             color: Colors.black54,
                             fontSize: 13
@@ -229,8 +228,8 @@ class _LogginigPageState extends State<LogginigPage> {
                             builder: (context) => RegistrationPage(),
                           ),
                         );},
-                      child: const Text(
-                        'Register',
+                      child: Text(
+                        LocaleKeys.buttonRegist.tr(),
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Color(0xFFdd434f),
@@ -255,7 +254,7 @@ class _LogginigPageState extends State<LogginigPage> {
         ),
       );
     } else {
-      _showMessage(message: 'Incorrectly filled data! Please try again');
+      _showMessage(message: LocaleKeys.submitForm.tr());
     }
   }
 
@@ -263,9 +262,9 @@ class _LogginigPageState extends State<LogginigPage> {
   String? validateloginUsername(String? value) {
     final nameExp = RegExp(r'^[A-Za-z ]+$');
     if (value == null) {
-      return 'Username is reqired.';
+      return LocaleKeys.validUsernamereq.tr();
     } else if (!nameExp.hasMatch(value)) {
-      return 'Please enter alphabetical characters.';
+      return LocaleKeys.validUsernamealph.tr();
     } else {
       return null;
     }
@@ -273,9 +272,9 @@ class _LogginigPageState extends State<LogginigPage> {
 
   String? validatelloginEmail(String? value) {
     if (value == null) {
-      return 'Email cannot be empty';
+      return LocaleKeys.validEmailempty.tr();
     } else if (!_emailController.text.contains('@')) {
-      return 'Invalid email address';
+      return LocaleKeys.validEmailaddress.tr();
     } else {
       return null;
     }
@@ -284,7 +283,7 @@ class _LogginigPageState extends State<LogginigPage> {
 
   String? _validateloginPassword(String? value) {
     if (_passController.text.length <= 7) {
-      return '8 character required for password';
+      return LocaleKeys.validPassword.tr();
     }  else {
       return null;
     }

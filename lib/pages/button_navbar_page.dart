@@ -66,7 +66,7 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
               color: Colors.white,
               size: 35)
           : const Icon(Icons.newspaper_outlined,
-              color: Colors.grey,
+              color: Color(0xFFBDBDBD),
               size: 35,)
           ),
           IconButton(
@@ -80,7 +80,7 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
                   color: Colors.white,
                   size: 35)
                   : const Icon(Icons.percent_rounded,
-                color: Colors.grey,
+                color: Color(0xFFBDBDBD),
                 size: 35,)
           ),
           IconButton(
@@ -94,9 +94,9 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
                   color: Colors.white,
                   size: 35)
                   : const Icon(Icons.password_rounded,
-                color: Colors.grey,
+                color: Color(0xFFBDBDBD),
                 size: 35,)
-          )
+          ),
         ],
       ),
     );

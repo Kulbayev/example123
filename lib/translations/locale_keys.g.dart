@@ -21,5 +21,12 @@ abstract class  LocaleKeys {
   static const dialogDone = 'dialogDone';
   static const dialogText = 'dialogText';
   static const dialogButton = 'dialogButton';
+  static const login = 'login';
+  static const noAcc = 'noAcc';
+  static const buttonRegist = 'buttonRegist';
+  static const appbarNews = 'appbarNews';
+  static const newsText1 = 'newsText1';
+  static const newsText2 = 'newsText2';
+  static const newsText3 = 'newsText3';
 
 }

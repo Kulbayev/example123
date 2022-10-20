@@ -81,12 +81,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     _fieldFocusChange(context, _fullnameFocus, _usernameFocus);
                   },
                   controller: _fullnameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      hintText: LocaleKeys.inputfullname,
+                      hintText: LocaleKeys.inputfullname.tr(),
                       prefixIcon: Icon(Icons.people, color: Color(0xFF9575CD)),
-                      enabledBorder: OutlineInputBorder(
+                      enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
                             BorderSide(color: Colors.transparent, width: 2.0),
@@ -107,10 +107,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     _fieldFocusChange(context, _usernameFocus, _emailFocus);
                   },
                   controller: _usernameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      hintText: "Enter username",
+                      hintText: LocaleKeys.inputusername.tr(),
                       prefixIcon: Icon(
                         Icons.assignment_ind,
                         color: Color(0xFF9575CD),
@@ -131,10 +131,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 7),
                 TextFormField(
                   controller: _emailController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      hintText: "Enter email address",
+                      hintText: LocaleKeys.inputemail.tr(),
                       prefixIcon: Icon(
                         Icons.alternate_email,
                         color: Color(0xFF9575CD),
@@ -161,10 +161,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   },
                   controller: _phoneController,
                   // maxLength: 10,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFB39DDB),
-                      hintText: "Phone format: (XXX)XXX-XXXX",
+                      hintText: LocaleKeys.inputphone.tr(),
                       prefixIcon: Icon(
                         Icons.phone,
                         color: Color(0xFF9575CD),
@@ -199,7 +199,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFB39DDB),
-                      hintText: "Enter password",
+                      hintText: LocaleKeys.inputpassword.tr(),
                       suffixIcon: IconButton(
                         icon: Icon(
                             _hidepassword
@@ -248,9 +248,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       padding: const EdgeInsets.only(left: 115),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
-                            'SUBMIT',
+                            LocaleKeys.buttonSubmit.tr(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15,
@@ -270,8 +270,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: const Text(
-                        "Already have an account?",
+                      child: Text(
+                        LocaleKeys.haveacc.tr(),
                         style: TextStyle(color: Colors.black54, fontSize: 13),
                       ),
                     ),
@@ -286,8 +286,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         );
                       },
-                      child: const Text(
-                        'Sing in',
+                      child: Text(
+                        LocaleKeys.buttonSign.tr(),
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.amberAccent,
@@ -308,16 +308,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
       _formKey.currentState!.save();
       _showDialog(name: _fullnameController.text);
     } else {
-      _showMessage(message: 'Incorrectly filled data! Please try again');
+      _showMessage(message: LocaleKeys.submitForm.tr());
     }
   }
 
   String? validateFullName(String? value) {
     final nameExp = RegExp(r'^[A-Za-z ]+$');
     if (value == null) {
-      return 'Fullname is reqired.';
+      return LocaleKeys.validFullnamereq.tr();
     } else if (!nameExp.hasMatch(value)) {
-      return 'Please enter alphabetical characters.';
+      return LocaleKeys.validFullnamealph.tr();
     } else {
       return null;
     }
@@ -326,9 +326,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String? validateUsername(String? value) {
     final nameExp = RegExp(r'^[A-Za-z ]+$');
     if (value == null) {
-      return 'Username is reqired.';
+      return LocaleKeys.validUsernamereq.tr();
     } else if (!nameExp.hasMatch(value)) {
-      return 'Please enter alphabetical characters.';
+      return LocaleKeys.validUsernamealph.tr();
     } else {
       return null;
     }
@@ -336,9 +336,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   String? validateEmail(String? value) {
     if (value == null) {
-      return 'Email cannot be empty';
+      return LocaleKeys.validEmailempty.tr();
     } else if (!_emailController.text.contains('@')) {
-      return 'Invalid email address';
+      return LocaleKeys.validEmailaddress.tr();
     } else {
       return null;
     }
@@ -351,7 +351,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   String? _validatePassword(String? value) {
     if (_passController.text.length <= 7) {
-      return '8 character required for password';
+      return LocaleKeys.validPassword.tr();
     } else {
       return null;
     }
@@ -364,15 +364,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
         return AlertDialog(
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(32.0))),
-          title: const Text(
-            'Done',
+          title: Text(
+            LocaleKeys.dialogDone.tr(),
             style: TextStyle(
                 color: Color(0xFF9575CD),
                 fontFamily: 'helvetica_neue_light',
                 fontSize: 23),
           ),
           content: Text(
-            '$name good job',
+            '$name' + LocaleKeys.dialogText.tr(),
             style: const TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 18.0,
@@ -399,8 +399,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 );
               },
-              child: const Text(
-                'Continue',
+              child: Text(
+                LocaleKeys.dialogButton.tr(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.0,

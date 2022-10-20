@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:registration_ui/pages/button_navbar_page.dart';
 import 'package:registration_ui/pages/choose_lang.dart';
 import 'translations/codegen_loader.g.dart';
 void main() async{
