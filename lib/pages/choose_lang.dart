@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:registration_ui/bloc/app_bloc.dart';
 import 'package:registration_ui/pages/registration_page.dart';
 
 class ChooseLang extends StatefulWidget {
@@ -10,6 +12,14 @@ class ChooseLang extends StatefulWidget {
 }
 
 class _ChooseLangState extends State<ChooseLang> {
+  // late AppBloc appBloc;
+
+  // @override
+  // void initState(){
+  //   appBloc = BlocProvider.of<AppBloc>(context);
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,6 +42,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('en'));
+                      // appBloc.add(AppStartedEvent());
                         Navigator.push( context,
                           MaterialPageRoute(
                             builder: (context) => RegistrationPage(),
@@ -50,6 +61,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('ru'));
+                      // appBloc.add(AppStartedEvent());
                       Navigator.push( context,
                         MaterialPageRoute(
                           builder: (context) => RegistrationPage(),
@@ -68,6 +80,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('kk'));
+                      // appBloc.add(AppStartedEvent());
                       Navigator.push( context,
                         MaterialPageRoute(
                           builder: (context) => RegistrationPage(),

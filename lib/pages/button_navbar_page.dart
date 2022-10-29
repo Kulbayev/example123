@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:registration_ui/button_pages/first_page.dart';
+import 'package:registration_ui/button_pages/qr_scann_page.dart';
 import 'package:registration_ui/button_pages/second_page.dart';
 import 'package:registration_ui/button_pages/third_page.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
@@ -17,9 +18,9 @@ class ButtonNavbarPage extends StatefulWidget {
 class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
   int pageIndex = 0;
   final pages = [
-    const FirstPage(),
-    const SecondPage(),
-    const ThirdPage(),
+    FirstPage(),
+    QrScannPage(),
+    MapSample(),
 
   ];
 
@@ -83,10 +84,10 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
                 });
               },
               icon: pageIndex == 1
-                  ? const Icon(Icons.person_outline_outlined,
+                  ? const Icon(Icons.qr_code_outlined,
                   color: Colors.white,
                   size: 35)
-                  : const Icon(Icons.percent_rounded,
+                  : const Icon(Icons.qr_code_rounded,
                 color: Color(0xFFBDBDBD),
                 size: 35,)
           ),
