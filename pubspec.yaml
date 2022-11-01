@@ -45,6 +45,8 @@ dependencies:
   google_maps_flutter: ^2.2.1
   flutter_polyline_points: ^1.0.0
   location: ^4.4.0
+  water_drop_nav_bar: ^2.2.0+4
+  curved_navigation_bar: ^1.0.3
 
 
 dev_dependencies:

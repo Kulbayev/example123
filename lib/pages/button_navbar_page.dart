@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:registration_ui/button_pages/first_page.dart';
@@ -5,7 +6,7 @@ import 'package:registration_ui/button_pages/qr_scann_page.dart';
 import 'package:registration_ui/button_pages/second_page.dart';
 import 'package:registration_ui/button_pages/third_page.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
-
+import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
 
 class ButtonNavbarPage extends StatefulWidget {
@@ -20,7 +21,14 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
   final pages = [
     FirstPage(),
     QrScannPage(),
-    MapSample(),
+    MapGoogle(),
+
+  ];
+
+  final items =const[
+    Icon(Icons.newspaper,size: 40,color: Colors.white,),
+    Icon(Icons.qr_code_rounded,size: 40,color: Colors.white,),
+    Icon(Icons.map,size: 40,color: Colors.white,)
 
   ];
 
@@ -46,6 +54,19 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
         backgroundColor: Color(0xFF38c172),
       ),
       body: pages[pageIndex],
+      // bottomNavigationBar: buildButtonNavbarPage(
+      //   items: items,
+      //   index: pageIndex,
+      //   onTap: (selectedIndex){
+      //     setState(() {
+      //       pageIndex = selectedIndex;
+      //     });
+      //   },
+      //   height: 50,
+      //   backgroundColor:Colors.transparent.withOpacity(0),
+      //   color: Color(0xFF38c172),
+      //   animationDuration: const Duration(milliseconds: 300),
+      // ),
       bottomNavigationBar: buildButtonNavbarPage(context),
     );
   }
@@ -80,7 +101,12 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
           IconButton(
               onPressed: () {
                 setState(() {
-                  pageIndex = 1;
+                  // pageIndex = 1;
+                  Navigator.push( context,
+                    MaterialPageRoute(
+                      builder: (context) => QrScannPage(),
+                    ),
+                  );
                 });
               },
               icon: pageIndex == 1
@@ -98,15 +124,16 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
                 });
               },
               icon: pageIndex == 2
-                  ? const Icon(Icons.password,
+                  ? const Icon(Icons.map_outlined,
                   color: Colors.white,
                   size: 35)
-                  : const Icon(Icons.password_rounded,
+                  : const Icon(Icons.map_rounded,
                 color: Color(0xFFBDBDBD),
                 size: 35,)
           ),
         ],
       ),
     );
+
   }
 }

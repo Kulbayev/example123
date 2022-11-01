@@ -1,73 +1,10 @@
-// import 'dart:io';
-//
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart';
-// import 'package:qr_code_scanner/qr_code_scanner.dart';
-//
-// class QrScannPage extends StatefulWidget {
-//   const QrScannPage({Key? key}) : super(key: key);
-//
-//   @override
-//   State<QrScannPage> createState() => _QrScannPageState();
-// }
-//
-// class _QrScannPageState extends State<QrScannPage> {
-//   final GlobalKey qrKey =GlobalKey(debugLabel: "QR");
-//   Barcode? result;
-//   QRViewController? controller;
-//   bool _flashOn = false;
-//
-//   @override
-//   void dispose() {
-//     controller?.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   void reassemble(){
-//     super.reassemble();
-//     if(Platform.isAndroid) {
-//       controller!.pauseCamera();
-//     }else if (Platform.isIOS){
-//       controller!.resumeCamera();
-//     }
-//   }
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Stack(
-//         alignment: Alignment.center,
-//         children: [
-//           buildQrView(context),
-//           Expanded(
-//             flex: 5,
-//             child: QRView(key: qrKey, onQRViewCreated: onQRViewCreated),)
-//         ],
-//       ),
-//     );
-//   }
-//
-//   Widget buildQrView(BuildContext context) => QRView(
-//     key: qrKey,
-//     onQRViewCreated: onQRViewCreated);
-//
-//
-//
-//   void onQRViewCreated(QRViewController controller) {
-//     this.controller = controller;
-//     controller.scannedDataStream.listen((scanData) {
-//       setState(() {
-//         result = scanData;
-//       });
-//     });
-//   }
-// }
-//
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:registration_ui/pages/button_navbar_page.dart';
 
 class QrScannPage extends StatefulWidget {
   const QrScannPage({Key? key}) : super(key: key);
@@ -78,10 +15,20 @@ class QrScannPage extends StatefulWidget {
 
 class _QrScannPageState extends State<QrScannPage> {
   Barcode? result;
+  String qrcode = '';
   QRViewController? controller;
   bool _flashOn = false;
 
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    if (Platform.isAndroid) {
+      controller!.pauseCamera();
+    }
+    controller!.resumeCamera();
+  }
 
   @override
   void dispose() {
@@ -94,7 +41,33 @@ class _QrScannPageState extends State<QrScannPage> {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(flex: 4, child: buildQrView(context)),
+          Expanded(
+              flex: 1,
+              child:Container(
+                // color: Colors.transparent.withOpacity(1),
+                color: Colors.black,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.keyboard_backspace_rounded,
+                        color: Colors.white,),
+                        onPressed: () {
+                        setState(() {
+                          Navigator.push( context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonNavbarPage(),
+                            ),
+                          );
+                        });
+                        },)
+                  ],
+                ),
+              )),
+          Expanded(
+              flex: 3,
+              child: buildQrView(context)),
           Expanded(
             flex: 1,
             child: Container(
@@ -122,13 +95,13 @@ class _QrScannPageState extends State<QrScannPage> {
                               )),
                         ),
                       ),
-                      // TODO надо разобраться перессылкой qr по адресу
-                      // Center(
-                      //   child:  (result != null)
-                      //       ?Text("Result: ${result!.code}")
-                      //       :Text("Scan a code",
-                      //   style: TextStyle(color: Colors.red),)
-                      // )
+                      Center(
+                        child: Text(
+                          qrcode,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15),),
+                      )
                     ],
                   ),
                 ],
@@ -162,9 +135,17 @@ class _QrScannPageState extends State<QrScannPage> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
+      if (qrcode.isEmpty){
+        qrcode = scanData.code!;
+        if(qrcode.isNotEmpty){
+          this.controller?.pauseCamera();
+          print(qrcode);
+          setState(() {
+            qrcode == result;
+            result = scanData;
+          });
+        }
+      }
     });
   }
 }
