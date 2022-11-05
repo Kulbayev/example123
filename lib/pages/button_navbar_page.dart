@@ -1,10 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_ui/button_pages/first_page.dart';
+import 'package:registration_ui/button_pages/news_page.dart';
+import 'package:registration_ui/button_pages/profile_main_page.dart';
 import 'package:registration_ui/button_pages/qr_scann_page.dart';
-import 'package:registration_ui/button_pages/second_page.dart';
-import 'package:registration_ui/button_pages/third_page.dart';
+import 'package:registration_ui/button_pages/map_page.dart';
+import 'package:registration_ui/model/user.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
@@ -22,15 +23,16 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
     FirstPage(),
     QrScannPage(),
     MapGoogle(),
+    // ProfileMainPage(userInfo: User(),),
 
   ];
-
-  final items =const[
-    Icon(Icons.newspaper,size: 40,color: Colors.white,),
-    Icon(Icons.qr_code_rounded,size: 40,color: Colors.white,),
-    Icon(Icons.map,size: 40,color: Colors.white,)
-
-  ];
+  //
+  // final items =const[
+  //   Icon(Icons.newspaper,size: 40,color: Colors.white,),
+  //   Icon(Icons.qr_code_rounded,size: 40,color: Colors.white,),
+  //   Icon(Icons.map,size: 40,color: Colors.white,)
+  //
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +130,20 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
                   color: Colors.white,
                   size: 35)
                   : const Icon(Icons.map_rounded,
+                color: Color(0xFFBDBDBD),
+                size: 35,)
+          ),
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  pageIndex = 3;
+                });
+              },
+              icon: pageIndex == 3
+                  ? const Icon(Icons.person_pin_rounded,
+                  color: Colors.white,
+                  size: 35)
+                  : const Icon(Icons.person_pin_outlined,
                 color: Color(0xFFBDBDBD),
                 size: 35,)
           ),

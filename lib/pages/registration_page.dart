@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -5,6 +7,8 @@ import 'package:registration_ui/constants/colors.dart';
 import 'package:registration_ui/pages/logginig_page.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:http/http.dart' as http;
+
 import '../model/user.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -307,6 +311,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      // const url = 'https://flutterproject-7b1e4-default-rtdb.firebaseio.com/user.json';
+      // http.post(Uri.parse(url),body: jsonEncode({
+      //   'fullname': _fullnameController,
+      //   'phone': _phoneController,
+      //   'email': _emailController,
+      //   'password': _passController,
+      //   'username': _usernameController
+      // })).then((response){
+      //   print(json.decode(response.body));
+      //   String userName = json.decode(response.body)['name'];
+      // });
       _showDialog(name: _fullnameController.text);
     } else {
       _showMessage(message: LocaleKeys.submitForm.tr());
