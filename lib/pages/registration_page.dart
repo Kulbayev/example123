@@ -311,17 +311,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // const url = 'https://flutterproject-7b1e4-default-rtdb.firebaseio.com/user.json';
+      // const url = 'https://registrationui-349af-default-rtdb.firebaseio.com/user.json';
       // http.post(Uri.parse(url),body: jsonEncode({
       //   'fullname': _fullnameController,
       //   'phone': _phoneController,
       //   'email': _emailController,
       //   'password': _passController,
       //   'username': _usernameController
-      // })).then((response){
-      //   print(json.decode(response.body));
-      //   String userName = json.decode(response.body)['name'];
-      // });
+      // }));
       _showDialog(name: _fullnameController.text);
     } else {
       _showMessage(message: LocaleKeys.submitForm.tr());
