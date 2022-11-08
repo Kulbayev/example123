@@ -6,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:registration_ui/pages/button_navbar_page.dart';
 import 'package:registration_ui/pages/choose_lang.dart';
 import 'package:registration_ui/button_pages/qr_scann_page.dart';
+import 'package:registration_ui/pages/registration_page.dart';
 import 'translations/codegen_loader.g.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,3 +75,8 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+//TODO Lateinitialization в ProfileMainPage
+//TODO Поменять навбар заготовка есть
+//TODO shared pref, поменять ui под один дизайн
