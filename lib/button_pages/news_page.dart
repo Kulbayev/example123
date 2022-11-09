@@ -21,6 +21,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.PeachMainView,
       appBar: AppBar(
         title: Text(
           LocaleKeys.appbarNews.tr(),

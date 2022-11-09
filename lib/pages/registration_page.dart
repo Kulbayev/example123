@@ -307,19 +307,37 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ));
   }
+  //
+  // void _submitForm() {
+  //   if (_formKey.currentState!.validate()) {
+  //     _formKey.currentState!.save();
+  //     // const url = 'https://registrationui-349af-default-rtdb.firebaseio.com/user.json';
+  //     // http.post(Uri.parse(url),body: jsonEncode({
+  //     //   'fullname': _fullnameController,
+  //     //   'phone': _phoneController,
+  //     //   'email': _emailController,
+  //     //   'password': _passController,
+  //     //   'username': _usernameController
+  //     // }));
+  //     _showDialog(name: _fullnameController.text);
+  //   } else {
+  //     _showMessage(message: LocaleKeys.submitForm.tr());
+  //   }
+  // }
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // const url = 'https://registrationui-349af-default-rtdb.firebaseio.com/user.json';
-      // http.post(Uri.parse(url),body: jsonEncode({
-      //   'fullname': _fullnameController,
-      //   'phone': _phoneController,
-      //   'email': _emailController,
-      //   'password': _passController,
-      //   'username': _usernameController
-      // }));
-      _showDialog(name: _fullnameController.text);
+      const url1 = 'https://registrationui-349af-default-rtdb.firebaseio.com/profileInfo.json';
+      http.post(Uri.parse(url1), body: jsonEncode({
+        'name': _fullnameController.text,
+        'phone': _phoneController.text,
+        'Email': _emailController.text,
+      })).then((response){
+        print(json.decode(response.body));
+        String userName = json.decode(response.body)['name'];
+        _showDialog(name: '$userName');
+      });
     } else {
       _showMessage(message: LocaleKeys.submitForm.tr());
     }
