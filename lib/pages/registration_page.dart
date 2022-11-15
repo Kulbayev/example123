@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:registration_ui/constants/colors.dart';
 import 'package:registration_ui/pages/logginig_page.dart';
+import 'package:registration_ui/pages/welcome_page.dart';
+import 'package:registration_ui/resources/shared_preference.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:http/http.dart' as http;
 
@@ -38,10 +42,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   final maskFormatter = MaskTextInputFormatter(mask: '+7(###)###-##-##');
 
+  late SharedPreferences logindata;
+  late bool newuser;
+
   User newUser = User();
 
-  void _fieldFocusChange(
-      BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    check_if_already_login();
+  }
+
+  void _fieldFocusChange(BuildContext context, FocusNode currentFocus,
+      FocusNode nextFocus) {
     currentFocus.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
   }
@@ -90,16 +104,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       filled: true,
                       fillColor: AppColors.RegInput,
                       hintText: LocaleKeys.inputfullname.tr(),
-                      prefixIcon: Icon(Icons.people, color: AppColors.PurpleIconBorderReg),
+                      prefixIcon: Icon(
+                          Icons.people, color: AppColors.PurpleIconBorderReg),
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Colors.transparent, width: 2.0),
+                        BorderSide(color: Colors.transparent, width: 2.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
+                        BorderSide(
+                            color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: validateFullName,
                   onSaved: (value) => newUser.fullname = value!,
@@ -123,12 +139,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Colors.transparent, width: 2.0),
+                        BorderSide(color: Colors.transparent, width: 2.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
+                        BorderSide(
+                            color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: validateUsername,
                   onSaved: (value) => newUser.username = value!,
@@ -147,12 +164,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Colors.transparent, width: 2.0),
+                        BorderSide(color: Colors.transparent, width: 2.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
+                        BorderSide(
+                            color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   keyboardType: TextInputType.emailAddress,
                   validator: validateEmail,
@@ -177,12 +195,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Colors.transparent, width: 2.0),
+                        BorderSide(color: Colors.transparent, width: 2.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: AppColors.PurpleIconBorderReg, width: 2.0),
+                        BorderSide(
+                            color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   keyboardType: TextInputType.phone,
                   // inputFormatters: [
@@ -224,12 +243,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color: Colors.transparent, width: 2.0),
+                        BorderSide(color: Colors.transparent, width: 2.0),
                       ),
                       focusedBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                         borderSide:
-                            BorderSide(color:AppColors.PurpleIconBorderReg, width: 2.0),
+                        BorderSide(
+                            color: AppColors.PurpleIconBorderReg, width: 2.0),
                       )),
                   validator: _validatePassword,
                 ),
@@ -285,9 +305,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LogginigPage(
-                              usersInfo: newUser,
-                            ),
+                            builder: (context) =>
+                                LogginigPage(
+                                  usersInfo: newUser,
+                                ),
                           ),
                         );
                       },
@@ -307,6 +328,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ));
   }
+
   //
   // void _submitForm() {
   //   if (_formKey.currentState!.validate()) {
@@ -333,7 +355,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         'name': _fullnameController.text,
         'phone': _phoneController.text,
         'Email': _emailController.text,
-      })).then((response){
+      })).then((response) {
         print(json.decode(response.body));
         String userName = json.decode(response.body)['name'];
         _showDialog(name: '$userName');
@@ -414,21 +436,41 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ElevatedButton(
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.PurpleIconBorderReg),
+                  MaterialStateProperty.all<Color>(
+                      AppColors.PurpleIconBorderReg),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18),
-                          side: const BorderSide(color: AppColors.PurpleIconBorderReg)))),
+                          side: const BorderSide(
+                              color: AppColors.PurpleIconBorderReg)))),
               onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LogginigPage(
-                      usersInfo: newUser,
-                    ),
-                  ),
-                );
+                // Navigator.pop(context);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => LogginigPage(
+                //       usersInfo: newUser,
+                //       //поменял!!!
+                //     ),
+                //   ),
+                // );
+                String username = _usernameController.text;
+                String fullname = _fullnameController.text;
+                String email = _emailController.text;
+                String password = _passController.text;
+
+                if (username != '' && password != '') {
+                  print('succ');
+                  logindata.setBool('login', false);
+
+                  logindata.setString('username', username);
+                  logindata.setString('fullname', fullname);
+                  logindata.setString('email', email);
+                  logindata.setString('password', password);
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => WelcomePage()));
+                }
               },
               child: Text(
                 LocaleKeys.dialogButton.tr(),
@@ -460,5 +502,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
             borderRadius: BorderRadius.all(Radius.circular(20))),
       ),
     );
+  }
+
+  void check_if_already_login() async {
+    logindata = await SharedPreferences.getInstance();
+    newuser = (logindata.getBool('login') ?? true);
+
+    print(newuser);
+    if (newuser == false) {
+      Navigator.pushReplacement(
+          context, new MaterialPageRoute(builder: (context) => WelcomePage()));
+    }
   }
 }

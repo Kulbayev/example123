@@ -1,14 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registration_ui/bloc/app_bloc.dart';
+import 'package:registration_ui/resources/shared_preference.dart';
 
 class AppRepository {
   Future<void> onLocaleInitAppEvent(
       LocaleInitAppEvent event, Emitter<AppState> emit) async {
-    if (await isAuthenticated()) {
+    // if (await sharedPreference.authStatus == false){
       emit(LocaleInitAppState());
-    } else {
-      await onAppStartedEvent(AppStartedEvent(), emit);
-    }
+    // } else {
+    //   await onAppStartedEvent(AppStartedEvent(), emit);
+    // }
   }
 
   Future<void> onAppStartedEvent(
@@ -26,6 +27,7 @@ class AppRepository {
   }
 
   Future<bool> isAuthenticated() async{
-    return true;
+    if (await sharedPreference.authStatus) return true;
+    return false;
   }
 }

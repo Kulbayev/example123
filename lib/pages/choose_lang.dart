@@ -12,14 +12,13 @@ class ChooseLang extends StatefulWidget {
 }
 
 class _ChooseLangState extends State<ChooseLang> {
-  // late AppBloc appBloc;
-
-  // @override
-  // void initState(){
-  //   appBloc = BlocProvider.of<AppBloc>(context);
-  //   super.initState();
-  // }
-
+  late AppBloc appBloc;
+  @override
+  void initState() {
+    // TODO: implement initState
+    appBloc = BlocProvider.of<AppBloc>(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,7 +41,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('en'));
-                      // appBloc.add(AppStartedEvent());
+                      appBloc.add(AppStartedEvent());
                         Navigator.push( context,
                           MaterialPageRoute(
                             builder: (context) => RegistrationPage(),
@@ -61,7 +60,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('ru'));
-                      // appBloc.add(AppStartedEvent());
+                      appBloc.add(AppStartedEvent());
                       Navigator.push( context,
                         MaterialPageRoute(
                           builder: (context) => RegistrationPage(),
@@ -80,7 +79,7 @@ class _ChooseLangState extends State<ChooseLang> {
                     ),
                     onPressed: () async{
                       await context.setLocale(Locale('kk'));
-                      // appBloc.add(AppStartedEvent());
+                      appBloc.add(AppStartedEvent());
                       Navigator.push( context,
                         MaterialPageRoute(
                           builder: (context) => RegistrationPage(),

@@ -10,6 +10,8 @@ import 'package:registration_ui/model/user.dart';
 import 'package:registration_ui/translations/locale_keys.g.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
+import '../resources/shared_preference.dart';
+
 
 class ButtonNavbarPage extends StatefulWidget {
   const ButtonNavbarPage({Key? key}) : super(key: key);
@@ -24,7 +26,8 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
     FirstPage(),
     QrScannPage(),
     MapGoogle(),
-    ProfileMainPage(userInfo: User(),),
+    // ProfileMainPage(userInfo: User(),),
+    // ProfilePage(),
 
   ];
 
@@ -46,6 +49,15 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
         onTap: (selectedIndex){
           setState(() {
             pageIndex = selectedIndex;
+
+            if (pageIndex == 1){
+              Navigator.push(context,MaterialPageRoute(
+                  builder: (context) => QrScannPage()));
+            }
+            // if (pageIndex == 2){
+            //   Navigator.push(context,MaterialPageRoute(
+            //       builder: (context) => MapGoogle()));
+            // }
           });
         },
         height: 50,
