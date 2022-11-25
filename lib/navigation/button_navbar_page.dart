@@ -64,6 +64,16 @@ class _ButtonNavbarPageState extends State<ButtonNavbarPage> {
         onTap: (selectedIndex) {
           setState(() {
             pageIndex = selectedIndex;
+
+            if (pageIndex == 1) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => QrScannPage()));
+            }
+
+            if (pageIndex == 2) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MapGoogle()));
+            }
             print(pageIndex);
           });
         },

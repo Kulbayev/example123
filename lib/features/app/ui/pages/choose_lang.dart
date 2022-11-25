@@ -33,7 +33,7 @@ class _ChooseLangState extends State<ChooseLang> {
                 SizedBox(height: 200,),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF4FC3F7),
+                        primary: Color(0xFF4FC3F7),
                         fixedSize: Size(320, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)
@@ -52,7 +52,7 @@ class _ChooseLangState extends State<ChooseLang> {
 
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF4FC3F7),
+                        primary: Color(0xFF4FC3F7),
                         fixedSize: Size(320, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)
@@ -71,7 +71,7 @@ class _ChooseLangState extends State<ChooseLang> {
 
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF4FC3F7),
+                        primary: Color(0xFF4FC3F7),
                         fixedSize: Size(320, 70),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)
